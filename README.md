@@ -2,6 +2,10 @@
 
 Exmorph is a simple tweening and data transformation library for Elixir.
 
+[![Build Status](https://travis-ci.org/supernintendo/exmorph.svg)](https://travis-ci.org/supernintendo/exmorph)
+[![Hex.pm](https://img.shields.io/hexpm/v/exmorph.svg?style=flat)](https://hex.pm/packages/exmorph/1.0.0)
+[![Hex.pm](https://img.shields.io/hexpm/dt/exmorph.svg?style=flat)](https://hex.pm/packages/exmorph/1.0.0)
+
 ## Usage
 
 Add to your mix.exs:

@@ -4,11 +4,11 @@ defmodule Exmorph.Mixfile do
   def project do
     [
       app: :exmorph,
-      version: "1.0.0",
+      version: "1.0.1",
       elixir: "~> 1.4.0",
       build_embedded: Mix.env == :prod,
       start_permanent: Mix.env == :prod,
-      description: "Use Elixir maps as a document storage format.",
+      description: "A simple tweening and data transformation library for Elixir",
       deps: deps(),
       package: package()
    ]
