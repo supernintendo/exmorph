@@ -10,7 +10,7 @@ Exmorph is a simple tweening and data transformation library for Elixir.
 
 Add to your mix.exs:
 
-`{:exmorph, "~> 0.1.0"}`
+`{:exmorph, "~> 1.0.1"}`
 
 Use `import Exmorph` to enable the `~t` sigil which can be used to generate
 a `%Exmorph.Tween{}`. The contents of the sigil are used to determine the
