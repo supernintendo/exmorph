@@ -3,35 +3,6 @@ defmodule Exmorph.Strings do
   alias Exmorph.Easing
 
   @doc """
-  Takes two arguments, a tween string (for instance, the string
-  passed to Exmorph's ~t sigil) and an enumerable. Returns a
-  string with all bindings (designated by wrapping the binding
-  names in curly braces) replaced with the corresponding
-  values within the enumerable.
-
-  If any of the binding names within the string are missing
-  a corresponding key value / pair within the enumerable,
-  an exception is thrown.
-
-  ## Examples
-
-      iex> params = %{"start" => 25, "end" => 50, "duration" => 10}
-      iex> Exmorph.Strings.interpolate_bindings("from {start} to {end} over {duration}s", params)
-      "from 25 to 50 over 10s"
-
-  """
-  def interpolate_bindings(string, bindings) do
-    Regex.scan(~r/{(.*?)}/, string)
-    |> Enum.reduce(string, fn [_capture, key], result ->
-      if bindings[key] do
-        String.replace(result, "{#{key}}", "#{bindings[key]}")
-      else
-        throw "Key #{key} not found in bindings #{inspect bindings}."
-      end
-    end)
-  end
-
-  @doc """
   Parses a tween string. The string is broken up into two-word
   chunks which are converted to key value pairs within a map.
   This map is eventually merged with %Exmorph.Tween{}.

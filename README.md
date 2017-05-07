@@ -19,10 +19,9 @@ iex> ~t(from 0 to 100 over 8sec ease quad_in)
  to: 100}
 ```
 
-`~t` is just an alias for the `tween` function provided by `Exmorph`. This
-function also takes an enumerable as a second argument. When binding names
-within curly braces (`{}`) are present in the provided string, they are
-replaced with values from the enumerable.
+`~t` is just an alias for the `tween` function provided by `Exmorph`;
+You could write the above as `Exmorph.tween("from 0 to 100 over 8sec ease quad_in")`
+without the need to import `Exmorph`.
 
 ```elixir
 iex> tween("from {here} to {there} over {time}s", %{"here" => 32, "there" => 64, "time" => 3})

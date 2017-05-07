@@ -11,11 +11,6 @@ defmodule Exmorph do
   Returns an %Exmorph.Tween{}, decoding the attributes for the
   tween from the provided string (see Exmorph.Strings.parse/1).
   """
-  def tween(string, bindings) when is_bitstring(string) do
-    string
-    |> Exmorph.Strings.interpolate_bindings(bindings)
-    |> tween()
-  end
   def tween(string) when is_bitstring(string) do
     %Exmorph.Tween{}
     |> struct(Exmorph.Strings.parse(string))
