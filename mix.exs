@@ -1,12 +1,10 @@
 defmodule Exmorph.Mixfile do
   use Mix.Project
 
-  @version File.read!("VERSION") |> String.strip
-
   def project do
     [
       app: :exmorph,
-      version: @version,
+      version: "0.1.1",
       elixir: "~> 1.4.0",
       build_embedded: Mix.env == :prod,
       start_permanent: Mix.env == :prod,
