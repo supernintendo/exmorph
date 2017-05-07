@@ -23,8 +23,8 @@ iex> ~t(from 0 to 100 over 8sec ease quad_in)
  to: 100}
 ```
 
-`~t` is just an alias for the `tween` function provided by `Exmorph`;
-You could write the above as `Exmorph.tween("from 0 to 100 over 8sec ease quad_in")`
+`~t` is just an alias for the `tween` function provided by `Exmorph`. You
+could write the above as `Exmorph.tween("from 0 to 100 over 8sec ease quad_in")`
 without the need to import `Exmorph`.
 
 ```elixir
