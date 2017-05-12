@@ -18,12 +18,13 @@ defmodule Exmorph.Time do
       3600000000000
 
   """
+  def from_string("infinity"), do: :infinity
   def from_string(value) when is_bitstring(value) do
     if Regex.match?(~r/((?:\d*\.)?\d+)(ms|s|m|h)/, value) do
       parse_time(value)
       |> to_nano
     else
-      throw "Cannot parse duration #{value}."
+      raise "Cannot parse duration #{value}."
     end
   end
 

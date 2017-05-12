@@ -79,7 +79,6 @@ defmodule Exmorph.Easing do
   def ease(t, :sine_out) do
     :math.sin(t * (:math.pi() / 2))
   end
-  def ease(t, _), do: ease(t, :linear)
 
   @doc """
   Takes and string and returns whether that string exists

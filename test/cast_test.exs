@@ -6,6 +6,7 @@ defmodule Exmorph.CastTest do
   test "&to_numeric/1" do
     assert Cast.to_numeric("1") == 1
     assert Cast.to_numeric("1.0") == 1.0
+    assert Cast.to_numeric("foo") == "foo"
   end
 
   test "&to_integer/1" do

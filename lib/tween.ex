@@ -1,5 +1,6 @@
 defmodule Exmorph.Tween do
-  defstruct delta: nil,
+  defstruct add: nil,
+            delta: nil,
             duration: nil,
             easing: :linear,
             ends_at: nil,

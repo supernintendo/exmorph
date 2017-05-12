@@ -22,8 +22,7 @@ defmodule Exmorph.Cast do
   end
 
   @doc """
-  Converts a bitstring to a float. Throws an
-  exception if the value cannot be cast.
+  Converts a bitstring to a float.
 
   ## Examples
 
@@ -35,15 +34,13 @@ defmodule Exmorph.Cast do
 
   """
   def to_float(value) when is_bitstring(value) do
-    case Float.parse("0#{value}") do
-      {value, _rem} -> value
-      :error -> throw "Cannot cast #{value} to float"
-    end
+    {value, _rem} = Float.parse("0#{value}")
+
+    value
   end
 
   @doc """
-  Converts a bitstring to an integer. Throws an
-  exception if the value cannot be cast.
+  Converts a bitstring to an integer.
 
   ## Examples
 
@@ -52,10 +49,9 @@ defmodule Exmorph.Cast do
 
   """
   def to_integer(value) when is_bitstring(value) do
-    case Integer.parse(value) do
-      {value, _rem} -> value
-      :error -> throw "Cannot cast #{value} to integer"
-    end
+    {value, _rem} = Integer.parse(value)
+
+    value
   end
 
   @doc """

@@ -27,12 +27,16 @@ defmodule Exmorph.Strings do
     |> Enum.chunk(2)
     |> Enum.reduce(%{}, fn chunk, result ->
       case chunk do
+        ["add", value] ->
+          Map.put(result, :add, Cast.to_numeric(value))
         ["ease", value] ->
           if Easing.valid?(value) do
             Map.put(result, :easing, String.to_existing_atom(value))
           else
             Map.put(result, :easing, :linear)
           end
+        ["every", value] ->
+          Map.put(result, :every, Exmorph.Time.from_string(value))
         ["from", value] ->
           Map.put(result, :from, Cast.to_numeric(value))
         ["over", value] ->

@@ -10,6 +10,7 @@ defmodule Exmorph.StringsTest do
         "from 25" => %{from: 25},
         "to 75" => %{to: 75},
         "ease linear" => %{easing: :linear},
+        "ease fallback" => %{easing: :linear},
         "over 100ms" => %{duration: 1.0e8},
         "from 25 to 75 over 100ms ease quad_in" => %{duration: 1.0e8, easing: :quad_in, from: 25, to: 75}
       }

@@ -4,13 +4,20 @@ defmodule Exmorph.Mixfile do
   def project do
     [
       app: :exmorph,
-      version: "1.0.1",
+      version: "1.0.2",
       elixir: "~> 1.4.0",
       build_embedded: Mix.env == :prod,
       start_permanent: Mix.env == :prod,
       description: "A simple tweening and data transformation library for Elixir",
       deps: deps(),
-      package: package()
+      package: package(),
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: [
+        "coveralls": :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.html": :test
+      ]
    ]
   end
 
@@ -21,7 +28,8 @@ defmodule Exmorph.Mixfile do
   defp deps do
     [
       {:earmark, ">= 0.0.0", only: :dev},
-      {:ex_doc, "~> 0.10", only: :dev}
+      {:ex_doc, "~> 0.10", only: :dev},
+      {:excoveralls, "~> 0.6", only: :test}
     ]
   end
 

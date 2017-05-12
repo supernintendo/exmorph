@@ -6,7 +6,7 @@ defmodule ExmorphTest do
 
   defp collect_samples(tween) do
     {
-      tween_value(tween),
+      tween_value(tween, :now),
       tween_value(tween, {tween.duration * 0.25, :nano_seconds}),
       tween_value(tween, {tween.duration * 0.50, :nano_seconds}),
       tween_value(tween, {tween.duration * 0.75, :nano_seconds}),
@@ -17,7 +17,7 @@ defmodule ExmorphTest do
 
   defp good_time(a, b, range), do: abs((b - a)) < range
 
-  test "constructing a tween with all options" do
+  test "constructing a finite tween" do
     current_time = :os.system_time(:nano_seconds)
     tween = ~t(from 0 to 100 over 10s ease linear)
 
@@ -27,6 +27,18 @@ defmodule ExmorphTest do
     assert tween.to == 100
     assert good_time(current_time, tween.started_at, Time.to_nano({1, :seconds}))
     assert good_time(tween.ends_at, tween.started_at + tween.duration, Time.to_nano({1, :seconds}))
+  end
+
+  test "constructing an infinite tween" do
+    current_time = :os.system_time(:nano_seconds)
+    tween = ~t(from 0 add 10 every 1s over infinity)
+
+    assert tween.add == 10
+    assert tween.duration == :infinity
+    assert tween.from == 0
+    assert is_nil(tween.to)
+    assert good_time(current_time, tween.started_at, Time.to_nano({1, :seconds}))
+    assert is_nil(tween.ends_at)
   end
 
   test "getting a value from a linear tween" do

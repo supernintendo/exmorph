@@ -54,7 +54,13 @@ defmodule Exmorph do
     end
   end
 
-  defp set_time_fields(%Tween{duration: duration, from: from, to: to} = tween) do
+  defp set_time_fields(%Tween{duration: :infinity, add: add} = tween) do
+    struct(tween, %{
+      add: add,
+      started_at: Exmorph.Time.now()
+    })
+  end
+  defp set_time_fields(%Tween{duration: duration, from: from, to: to} = tween) when is_number(duration) do
     started_at = Exmorph.Time.now()
     ends_at = Exmorph.Time.now() + duration
 
