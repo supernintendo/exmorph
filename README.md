@@ -28,13 +28,6 @@ iex> ~t(from 0 to 100 over 8sec ease quad_in)
 could write the above as `Exmorph.tween("from 0 to 100 over 8sec ease quad_in")`
 without the need to import `Exmorph`.
 
-```elixir
-iex> tween("from {here} to {there} over {time}s", %{"here" => 32, "there" => 64, "time" => 3})
-%Exmorph.Tween{delta: 32, duration: 3000000000, easing: :linear,
- ends_at: 1494153281094819000, from: 32, started_at: 1494153278094819000,
- to: 64}
-```
-
 By importing `Exmorph`, you also pull in the `tween_value` function. This
 function takes an `%Exmorph.Tween{}` and returns the transformed value
 based on the current time. An interval of time can also be passed as the
