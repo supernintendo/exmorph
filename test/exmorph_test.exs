@@ -173,4 +173,12 @@ defmodule ExmorphTest do
     assert good_time(e, 100, 1)
     assert f == 100
   end
+
+  test "getting a value from an infinite tween" do
+    tween = ~t(from 0 add 10 every 10s over infinity)
+
+    assert tween_value(tween, {10, :seconds}) == 10.0
+    assert tween_value(tween, {20, :seconds}) == 20.0
+    assert tween_value(tween, {30, :seconds}) == 30.0
+  end
 end

@@ -47,6 +47,8 @@ defmodule Exmorph do
   end
   def tween_value(%Tween{} = tween, time) do
     cond do
+      tween.add && tween.from && tween.every ->
+        tween.from + (((time - tween.started_at) / tween.every) * tween.add)
       time > tween.ends_at ->
         tween.to
       true ->
