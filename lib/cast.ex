@@ -34,9 +34,13 @@ defmodule Exmorph.Cast do
 
   """
   def to_float(value) when is_bitstring(value) do
-    {value, _rem} = Float.parse("0#{value}")
-
-    value
+    if String.contains?(value, "-") do
+      {value, _rem} = Float.parse("-#{String.replace(value, "-", "")}")
+      value
+    else
+      {value, _rem} = Float.parse("0#{value}")
+      value
+    end
   end
 
   @doc """
@@ -88,6 +92,6 @@ defmodule Exmorph.Cast do
 
   """
   def matches_integer?(value) when is_bitstring(value) do
-    Regex.match?(~r/^[0-9]*$/, value)
+    Regex.match?(~r/^-?[0-9]*$/, value)
   end
 end
